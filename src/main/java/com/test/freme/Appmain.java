@@ -8,6 +8,7 @@ package com.test.freme;
 import org.apache.log4j.Logger;
 
 import com.test.freme.model.Individu;
+import com.test.freme.model.MySQLAcces;
 import com.test.freme.model.Person;
 
 import lombok.extern.log4j.Log4j;
@@ -22,10 +23,16 @@ public class Appmain {
 	/**
 	 * @param args
 	 */
+	
 	private static final Logger log = Logger.getLogger(Appmain.class);
+	
+	
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+				
 		log.info("entree dans la methode main");
 		log.info("Creation person");
 		Person p = new Person ();
@@ -54,7 +61,21 @@ public class Appmain {
 				.build();
 		log.info("Individu2: "+individu2.toString());
 		
+		lancerMysql();
 
 	}
+	
+	private static void lancerMysql() {
+		
+		log.info("Mysql");
+		try {
+			MySQLAcces dao = new MySQLAcces();
+			dao.readDataBase();
+		} catch (Exception e) {
+			log.error (e);
+		}
+	}
+	
+	
 
 }
